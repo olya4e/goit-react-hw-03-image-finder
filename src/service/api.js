@@ -8,6 +8,11 @@ export const getImageFromApi = async (page, query) => {
     `?q=${query}&page=${page}&key=${API_KEY}&${BASE_FILTER}`
   );
   const images = response.data.hits;
-
+  const totalHits = response.data.totalHits;
+  if (totalHits === 0) {
+    alert(
+      "Sorry, we can't find anyting for your request. Please, enter another request"
+    );
+  }
   return images;
 };

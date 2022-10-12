@@ -22,19 +22,17 @@ class App extends Component {
     
   }
   addImage = async (page, searchQuery) => {
-    // const {items}=this.state
     try {
       this.setState({
         isLoading: true
       })
       const images = await API.getImageFromApi(page, searchQuery)
+      
     this.setState(prevState=>({
       items: [...prevState.items, ...images],
       isLoading: false
     }))
-      // if (items.length <= 0) {
-      //   alert("Sorry, we can't find anyting for your request. Please, enter another request")
-      // }
+      
     } catch (err) {
       console.log(err);
     } finally {
