@@ -4,7 +4,6 @@ import { ImageGallery } from './ImageGallery/ImageGallery'
 import { LoadMoreBtn } from './Button/Button'
 import {Loader} from './Loader/Loader'
 import {getImageFromApi} from '../api/api'
-import  Modal  from "./Modal/Modal";
 
 class App extends Component {
   state = {
@@ -12,7 +11,6 @@ class App extends Component {
     page: 1,
     searchQuery: '',
     isLoading: false,
-    urlImage: ''
   }
   componentDidUpdate(_, prevState) {
     const { page, searchQuery} = this.state
@@ -60,32 +58,15 @@ class App extends Component {
       page: prevState.page + 1
     }))
   }
-  onOpenModal = (url) => {
-    this.setState({
-      urlImage: url
-    })
-    
-  }
-  onCloseModal = () => {
-    this.setState({
-      urlImage:''
-    })
-  }
- 
-
+  
   render() {
-    const { items, isLoading, urlImage } = this.state
-    
-
+    const { items, isLoading } = this.state
     return (
       <div>
         <SearchBar onSubmit={this.handleSearchbarSumbit} />
-        <ImageGallery items={items} onClick={this.onOpenModal} />
+        <ImageGallery items={items} />
         {isLoading && <Loader />}
-        
         {items.length > 0 && (<LoadMoreBtn onClick={this.onLoadMoreButton} />)}
-        
-        {urlImage && <Modal url={urlImage} onClose={ this.onCloseModal} />}
       </div>
     )
   }

@@ -4,7 +4,7 @@ import css from './Modal.module.css'
 
 const modalRoot = document.querySelector('#modal-root')
 
-class Modal extends Component{
+export class Modal extends Component{
     handleBackdropClick = (e) => {
         if (e.currentTarget === e.target) {
             this.props.onClose()
@@ -37,4 +37,3 @@ class Modal extends Component{
     }
     
 }
-export default Modal
