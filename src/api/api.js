@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { API_KEY } from '../constants/constants';
+import { BASE_FILTER } from '../constants/constants';
 axios.defaults.baseURL = 'https://pixabay.com/api/';
-const API_KEY = '29924720-00695de3645e8c14b883cf24e';
-const BASE_FILTER = 'image_type=photo&orientation=horizontal&per_page=12';
 
 export const getImageFromApi = async (page, query) => {
   const response = await axios.get(

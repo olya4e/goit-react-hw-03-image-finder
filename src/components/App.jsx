@@ -3,7 +3,7 @@ import { SearchBar } from "./Searchbar/Searchbar";
 import { ImageGallery } from './ImageGallery/ImageGallery'
 import { LoadMoreBtn } from './Button/Button'
 import {Loader} from './Loader/Loader'
-import * as API from '../service/api'
+import {getImageFromApi} from '../api/api'
 import  Modal  from "./Modal/Modal";
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
       this.setState({
         isLoading: true
       })
-      const images = await API.getImageFromApi(page, searchQuery)
+      const images = await getImageFromApi(page, searchQuery)
       
     this.setState(prevState=>({
       items: [...prevState.items, ...images],
